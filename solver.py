@@ -38,14 +38,14 @@ class SudokuGrid:
 
         return filter(lambda digit: not digit in digits, possible_moves)
 
-    def solve(self, nb_soluces:int=1)->int:
+    def solve(self, nb_soluces:int=1, last_soluce:str="")->int:
         index = self.getFirstEmptySquareIndex()
-        if index == -1:return nb_soluces - 1
+        if index == -1:return nb_soluces - 1, self.grid
 
         digits = self.getAvailableDigits(index)
         for digit in digits:
             self[index] = digit
-            nb_soluces  = self.solve(nb_soluces)
+            nb_soluces, last_soluce  = self.solve(nb_soluces, last_soluce)
             self[index] = "0"
-            if nb_soluces == 0:return 0
-        return nb_soluces
+            if nb_soluces == 0:return 0, last_soluce
+        return nb_soluces, last_soluce

@@ -20,10 +20,10 @@ def generate_sudoku(sudoku:SudokuGrid):
 
         sudoku[index] = digit
 
-        result = sudoku.solve(nb_soluces=2)
+        result, grid = sudoku.solve(nb_soluces=2)
         if result == 0:
             result = generate_sudoku(sudoku)
             if result:return result
-        elif result == 1:return sudoku
+        elif result == 1:return sudoku.grid, grid
         
         sudoku[index] = "0"
