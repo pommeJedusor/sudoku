@@ -38,7 +38,7 @@ class SudokuGrid:
 
         return filter(lambda digit: not digit in digits, possible_moves)
 
-    def solve(self, nb_soluces:int=1):
+    def solve(self, nb_soluces:int=1)->int:
         index = self.getFirstEmptySquareIndex()
         if index == -1:return nb_soluces - 1
 
