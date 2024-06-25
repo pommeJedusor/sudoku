@@ -46,6 +46,6 @@ class SudokuGrid:
         for digit in digits:
             self[index] = digit
             nb_soluces  = self.solve(nb_soluces)
-            if nb_soluces == 0:return 0
             self[index] = "0"
+            if nb_soluces == 0:return 0
         return nb_soluces
